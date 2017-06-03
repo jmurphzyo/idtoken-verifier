@@ -46,6 +46,10 @@ IdTokenVerifier.prototype.verify = function (token, nonce, cb) {
   var tnonce = jwt.payload.nonce || null;
   /* eslint-enable vars-on-top */
 
+  if (this.issuer.slice(-1) !== iss.slice(-1)) {
+    this.issuer = this.issuer.slice(0, -1);
+  }
+
   if (this.issuer !== iss) {
     return cb(new error.TokenValidationError('Issuer ' + iss + ' is not valid.'), false);
   }
