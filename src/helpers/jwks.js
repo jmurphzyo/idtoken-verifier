@@ -13,7 +13,7 @@ function process(jwks) {
 }
 
 function getJWKS(options, cb) {
-  var url = urljoin(options.iss, '.well-known', 'jwks.json');
+  var url = urljoin(options.iss, '.well-known', 'openid-configuration','jwks');
 
   return request
     .get(url)
